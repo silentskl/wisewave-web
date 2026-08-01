@@ -1,5 +1,6 @@
 {
   "price_factor": 1.2,
+  "show_block_resistant_cdn": false,
   "currency": "USD",
   "unit": "Mbps",
   "billing": "月度 95 峰值带宽计费",
@@ -14,7 +15,7 @@
       "base_price": 45
     },
     {
-      "id": "mobile-resilience",
+      "id": "block-resistant",
       "base_price": 55
     }
   ]

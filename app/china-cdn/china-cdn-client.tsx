@@ -4,10 +4,11 @@ import { useEffect, useMemo, useState } from "react";
 
 type Lang = "zh" | "en";
 
-type ProductId = "return-cdn" | "full-shield" | "mobile-resilience";
+type ProductId = "return-cdn" | "full-shield" | "block-resistant";
 
 type CdnConfig = {
   price_factor: number;
+  show_block_resistant_cdn: boolean;
   currency: string;
   unit: string;
   billing: string;
@@ -17,6 +18,7 @@ type CdnConfig = {
 
 const fallbackConfig: CdnConfig = {
   price_factor: 1.2,
+  show_block_resistant_cdn: false,
   currency: "USD",
   unit: "Mbps",
   billing: "月度 95 峰值带宽计费",
@@ -24,7 +26,7 @@ const fallbackConfig: CdnConfig = {
   products: [
     { id: "return-cdn", base_price: 35 },
     { id: "full-shield", base_price: 45 },
-    { id: "mobile-resilience", base_price: 55 },
+    { id: "block-resistant", base_price: 55 },
   ],
 };
 
@@ -65,10 +67,10 @@ const copy = {
         fit: "适合电商、SaaS、门户与高并发 Web 业务",
         features: ["CN2 / 中港精品 BGP 回国线路", "静态与动态内容加速", "默认开启 CC 防护", "Anti-DDoS 无限防护服务*", "月度 95 峰值带宽计费"],
       },
-      "mobile-resilience": {
-        name: "防中国移动屏蔽 CDN",
-        fit: "适合对中国移动网络可达性要求更高的业务",
-        features: ["增强中国移动网络可达性与线路调度", "静态与动态内容加速", "默认开启 CC 防护", "Anti-DDoS 无限防护服务*", "月度 95 峰值带宽计费"],
+      "block-resistant": {
+        name: "防屏蔽 CDN",
+        fit: "适合对业务持续可达性和线路稳定性要求更高的场景",
+        features: ["增强业务可达性与多线路调度", "静态与动态内容加速", "默认开启 CC 防护", "Anti-DDoS 无限防护服务*", "月度 95 峰值带宽计费"],
       },
     },
     flowKicker: "DELIVERY FLOW",
@@ -126,10 +128,10 @@ const copy = {
         fit: "For e-commerce, SaaS, portals and high-concurrency web workloads",
         features: ["CN2 / premium China–Hong Kong BGP", "Static and dynamic acceleration", "CC protection enabled by default", "Unlimited Anti-DDoS service*", "Monthly 95th-percentile billing"],
       },
-      "mobile-resilience": {
-        name: "China Mobile Resilience CDN",
-        fit: "For workloads that require stronger reachability on China Mobile",
-        features: ["Enhanced China Mobile reachability and routing", "Static and dynamic acceleration", "CC protection enabled by default", "Unlimited Anti-DDoS service*", "Monthly 95th-percentile billing"],
+      "block-resistant": {
+        name: "Block-Resistant CDN",
+        fit: "For workloads requiring stronger service reachability and route resilience",
+        features: ["Enhanced reachability with multi-route steering", "Static and dynamic acceleration", "CC protection enabled by default", "Unlimited Anti-DDoS service*", "Monthly 95th-percentile billing"],
       },
     },
     flowKicker: "DELIVERY FLOW",
@@ -176,8 +178,10 @@ export default function ChinaCdnClient() {
   }, []);
 
   const products = useMemo(
-    () => config.products.filter((product) => t.productCopy[product.id]),
-    [config.products, t.productCopy],
+    () => config.products.filter((product) =>
+      t.productCopy[product.id] && (product.id !== "block-resistant" || config.show_block_resistant_cdn),
+    ),
+    [config.products, config.show_block_resistant_cdn, t.productCopy],
   );
 
   return (

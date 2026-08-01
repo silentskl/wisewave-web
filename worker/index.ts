@@ -6,6 +6,7 @@ import chinaCdnConfig from "../public/china-cdn-config.json";
 interface Env {
   ASSETS: Fetcher;
   CDN_PRICE_FACTOR?: string;
+  CDN_SHOW_BLOCK_RESISTANT?: string;
   IMAGES: {
     input(stream: ReadableStream): {
       transform(options: Record<string, unknown>): {
@@ -35,6 +36,13 @@ const worker = {
       const workerFactor = Number.parseFloat(env.CDN_PRICE_FACTOR ?? "");
       if (Number.isFinite(workerFactor) && workerFactor > 0) {
         config.price_factor = workerFactor;
+      }
+
+      const workerVisibility = env.CDN_SHOW_BLOCK_RESISTANT?.trim().toLowerCase();
+      if (["true", "1", "yes", "on"].includes(workerVisibility ?? "")) {
+        config.show_block_resistant_cdn = true;
+      } else if (["false", "0", "no", "off"].includes(workerVisibility ?? "")) {
+        config.show_block_resistant_cdn = false;
       }
 
       return Response.json(config, {
