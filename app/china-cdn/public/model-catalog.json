@@ -1,0 +1,25 @@
+{
+  "platform_url": "https://ai.wisewavesg.com",
+  "models": [
+    {
+      "name": "Seedance 2.0",
+      "enabled": true,
+      "order": 10
+    },
+    {
+      "name": "Kimi K3",
+      "enabled": true,
+      "order": 20
+    },
+    {
+      "name": "Claude",
+      "enabled": true,
+      "order": 30
+    },
+    {
+      "name": "Qwen3",
+      "enabled": true,
+      "order": 40
+    }
+  ]
+}

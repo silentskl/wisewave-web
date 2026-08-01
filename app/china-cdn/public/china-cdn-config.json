@@ -1,0 +1,22 @@
+{
+  "price_factor": 1.2,
+  "show_block_resistant_cdn": false,
+  "currency": "USD",
+  "unit": "Mbps",
+  "billing": "月度 95 峰值带宽计费",
+  "contact_url": "mailto:info@wisewavesg.com?subject=China%20Acceleration%20CDN%20Inquiry",
+  "products": [
+    {
+      "id": "return-cdn",
+      "base_price": 35
+    },
+    {
+      "id": "full-shield",
+      "base_price": 45
+    },
+    {
+      "id": "block-resistant",
+      "base_price": 55
+    }
+  ]
+}
