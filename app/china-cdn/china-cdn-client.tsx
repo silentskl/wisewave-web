@@ -238,7 +238,7 @@ export default function ChinaCdnClient() {
         <div className="section-shell section-heading">
           <p className="section-kicker">{t.productsKicker}</p><h2>{t.productsTitle}</h2><p>{t.productsLead}</p>
         </div>
-        <div className="section-shell pricing-grid">
+        <div className={products.length === 2 ? "section-shell pricing-grid two-products" : "section-shell pricing-grid"}>
           {products.map((product, index) => {
             const productText = t.productCopy[product.id];
             const displayPrice = product.base_price * config.price_factor;
