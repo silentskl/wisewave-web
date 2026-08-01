@@ -3,8 +3,8 @@
 ## 首次发布
 
 ```bash
-unzip WiseWave-Website-v1.1.0-China-CDN.zip
-cd WiseWave-Website-v1.1.0-China-CDN
+unzip WiseWave-Website-v1.1.1-China-CDN.zip
+cd WiseWave-Website-v1.1.1-China-CDN
 node --version
 npm install
 npx wrangler login

@@ -1,4 +1,4 @@
-# WiseWave Website v1.1.0 — China Acceleration CDN
+# WiseWave Website v1.1.1 — China Acceleration CDN
 
 Cloudflare Worker-ready WiseWave corporate website. This release adds a dedicated bilingual China Acceleration CDN page at `/china-cdn`, three configurable product plans, and a pricing-factor override for Cloudflare Workers.
 

@@ -49,11 +49,9 @@ const copy = {
     ],
     productsKicker: "PRODUCT OPTIONS",
     productsTitle: "三种方案，按加速与防护需求选择",
-    productsLead: "页面单价已包含当前价格系数，并按月度 95 峰值带宽计费。最终资源、可用区域和防护策略以商务确认及服务协议为准。",
+    productsLead: "所有方案均按月度 95 峰值带宽计费。最终资源、可用区域和防护策略以商务确认及服务协议为准。",
     pricePrefix: "US$",
     per: "/ Mbps",
-    displayed: "当前展示系数",
-    original: "目录基础单价",
     choose: "咨询此方案",
     popular: "推荐",
     productCopy: {
@@ -112,11 +110,9 @@ const copy = {
     ],
     productsKicker: "PRODUCT OPTIONS",
     productsTitle: "Three options for different acceleration and risk profiles",
-    productsLead: "Displayed unit prices include the active pricing factor and use monthly 95th-percentile bandwidth billing. Final availability and protection policies are subject to service confirmation and agreement.",
+    productsLead: "All plans use monthly 95th-percentile bandwidth billing. Final availability and protection policies are subject to service confirmation and agreement.",
     pricePrefix: "US$",
     per: "/ Mbps",
-    displayed: "Active display factor",
-    original: "Catalog base price",
     choose: "Ask about this plan",
     popular: "Recommended",
     productCopy: {
@@ -248,7 +244,6 @@ export default function ChinaCdnClient() {
                 <p className="price-index">0{index + 1} / {product.id.toUpperCase()}</p>
                 <h3>{productText.name}</h3><p className="price-fit">{productText.fit}</p>
                 <div className="price"><small>{t.pricePrefix}</small><strong>{displayPrice.toFixed(2)}</strong><span>{t.per}</span></div>
-                <div className="price-meta"><span>{t.displayed}: × {config.price_factor}</span><span>{t.original}: US${product.base_price}/{config.unit}</span></div>
                 <ul>{productText.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
                 <a className={index === 1 ? "button primary" : "button secondary"} href={`${config.contact_url}${config.contact_url.includes("?") ? "&" : "?"}plan=${encodeURIComponent(product.id)}`}>{t.choose}</a>
               </article>
