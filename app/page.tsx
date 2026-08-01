@@ -80,6 +80,7 @@ const copy = {
     detailCapability: "产品能力",
     detailAdvantages: "优势与特点",
     tryNow: "立即体验",
+    chinaCdn: "查看中国回国加速方案",
     serviceDetails: [
       {
         id: "ai",
@@ -239,6 +240,7 @@ const copy = {
     detailCapability: "What we deliver",
     detailAdvantages: "Advantages & features",
     tryNow: "Try it now",
+    chinaCdn: "Explore China Acceleration CDN",
     serviceDetails: [
       {
         id: "ai",
@@ -478,7 +480,7 @@ export default function Home() {
                 {service.tags.map((tag) => <span key={tag}>{tag}</span>)}
               </div>
               <a
-                href={`#service-${service.code.toLowerCase()}`}
+                href={service.code === "CDN" ? "/china-cdn" : `#service-${service.code.toLowerCase()}`}
                 className="text-link"
               >
                 {t.learn}<span aria-hidden="true">↗</span>
@@ -520,6 +522,11 @@ export default function Home() {
                   rel="noopener noreferrer"
                 >
                   {t.tryNow}<span aria-hidden="true">↗</span>
+                </a>
+              )}
+              {detail.id === "cdn" && (
+                <a className="button primary detail-cta" href="/china-cdn">
+                  {t.chinaCdn}<span aria-hidden="true">↗</span>
                 </a>
               )}
             </div>
